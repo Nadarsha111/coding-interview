@@ -1,0 +1,28 @@
+function updateInventory(arr1, arr2) {
+
+// helper fuction
+function findItemIndex(inventory,itemName){
+    return inventory.findIndex(item => item[1] === itemName);
+}
+
+for (let newInventory of arr2){
+      let item =newInventory[1];
+      let newQuantity =newInventory[0];
+
+      let index = findItemIndex(arr1,item);
+      
+      if(index !== -1){
+          arr1[index][0] += newQuantity;
+      }else{
+          arr1.push(newInventory)
+      }
+      
+      
+}
+return arr1.sort((a,b)=>a[1].localeCompare(b[1]))
+
+}
+
+// Example inventory lists
+let update = updateInventory([[21, "Bowling Ball"], [2, "Dirty Sock"], [1, "Hair Pin"], [5, "Microphone"]], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]])
+console.log(update);
