@@ -1,0 +1,21 @@
+function sym(...args) {
+
+  function symmetricDifference(arr1, arr2) {
+    const diff1 = arr1.filter(x => !arr2.includes(x));
+    const diff2 = arr2.filter(x => !arr1.includes(x));
+    return ([...diff1, ...diff2])
+  }
+
+  let num = args.reduce(symmetricDifference);
+  console.log("num",num);
+
+  let existing =  num.filter((item, index) => {
+
+     return num.indexOf(item) === index;
+
+   });
+   
+   console.log("after")
+return existing
+}
+console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
